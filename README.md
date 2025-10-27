@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jazila - A Love Story
 
-## Getting Started
+A romantic digital journey built with Next.js.
 
-First, run the development server:
+## Local Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+This creates an optimized production build in the `out` directory, ready for static hosting.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment to Cloudflare Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Option 1: Automatic Deployment via Git
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push your code to GitHub, GitLab, or Bitbucket
+2. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com)
+3. Go to Pages → Create a project
+4. Connect your repository
+5. Configure build settings:
+   - **Build command:** `npm run build`
+   - **Build output directory:** `out`
+   - **Node version:** `20` or latest
+6. Click "Save and Deploy"
 
-## Deploy on Vercel
+### Option 2: Manual Deployment via Wrangler CLI
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Install Wrangler CLI:
+   ```bash
+   npm install -g wrangler
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. Login to Cloudflare:
+   ```bash
+   wrangler login
+   ```
+
+3. Build the project:
+   ```bash
+   npm run build
+   ```
+
+4. Deploy to Cloudflare Pages:
+   ```bash
+   wrangler pages deploy out
+   ```
+
+### Environment Variables
+
+If you need environment variables in the future, add them in Cloudflare Pages settings under Environment Variables.
+
+## Project Structure
+
+- `/src/app` - Next.js App Router pages and layouts
+- `/public` - Static assets (images, videos, fonts)
+- `/out` - Production build output (generated after build)
+
+## Features
+
+- Responsive design optimized for all devices
+- Smooth scrolling experience
+- Auto-playing video backgrounds
+- Custom typography with Ogg and Switzer fonts
+- Starfield animations
+
+## Technologies
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- Cloudflare Pages (for deployment)
